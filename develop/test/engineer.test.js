@@ -6,8 +6,8 @@ test("Does GitHub username return from getGithub()?", () => {
     expect(emp.getGithub()).toBe("GitHubUsername");
 });
 
-test("Does Engineer retrun from getRole()?", () => {
-  const emp = new Engineer("Fry", 10, "email@email.com", "GitHubUsername");
-  expect(emp.getRole()).toBe("Engineer");
+test("Does Engineer return from getRole()?", () => {
+    const emp = new Engineer("Fry", 10, "email@email.com", "GitHubUsername");
+    expect(emp.getRole()).toBe("Engineer");
 });
 

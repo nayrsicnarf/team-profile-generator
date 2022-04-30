@@ -9,17 +9,17 @@ class Employee {
         return this.name;
     }
 
-    getId () {
+    getId() {
         return this.id;
     }
 
-    getEmail () {
+    getEmail() {
         return this.email;
     }
-    
-    getRole () {
+
+    getRole() {
         return Employee.name;
     }
-
 }
+
 module.exports = Employee;
