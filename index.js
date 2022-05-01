@@ -5,12 +5,12 @@ const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const render = require("./lib/renderHtml");
 
-// // these paths are used in fs.writeFile to target the correct folder locations
 const dist_DIR = path.resolve(__dirname, "dist");
 const distPath = path.join(dist_DIR, "myTeam.html");
-// // render is used to create the html dist
-const render = require("./lib/renderHtml");
+
+
 
 const validateString = async input => {
     if (input.trim() === "" || !isNaN(input.trim())) {
@@ -138,40 +138,28 @@ const internQuestions = [{
 
 const dist = [];
 
-const capLetters = str => {
-    let arrayStr = str.split(" ");
-    let capLetter = "";
+const capitalLetters = str => {
+    let strArray = str.split(" ");
+    let capitalLetter = "";
     let newString = "";
-    for (let i = 0; i < arrayStr.length; i++) {
-        if (arrayStr[i].toLowerCase() === "of") {
+    for (let i = 0; i < strArray.length; i++) {
+        if (strArray[i].toLowerCase() === "of") {
             newString += "of ";
         } else {
-            capLetter = arrayStr[i][0].toUpperCase();
-            newString += capLetter + arrayStr[i].slice(1, arrayStr[i].length).toLowerCase() + " ";
+            capitalLetter = strArray[i][0].toUpperCase();
+            newString += capitalLetter + strArray[i].slice(1, strArray[i].length).toLowerCase() + " ";
         }
     }
     return newString.trim();
 }
 
-const init = () => {
+const manager = () => {
     inquirer.prompt(managerQuestions).then(response => {
-        response.managerName = capLetters(response.managerName);
+        response.managerName = capitalLetters(response.managerName);
         const manager = new Manager(response.managerName, response.managerId, response.managerEmail, response.managerOfficeNumber)
         dist.push(manager);
         if (response.addBool) {
-            addEmployeeFunc();
-        } else {
-            renderOut();
-        }
-    })
-}
-
-const addEmployeeFunc = () => {
-    inquirer.prompt(addEmployee).then(response => {
-        if (response.teamMember === "Engineer") {
-            engineer();
-        } else if (response.teamMember === "Intern") {
-            intern();
+            employeeAdd();
         } else {
             renderOut();
         }
@@ -180,11 +168,11 @@ const addEmployeeFunc = () => {
 
 const engineer = () => {
     inquirer.prompt(engineerQuestions).then(response => {
-        response.engineerName = capLetters(response.engineerName);
+        response.engineerName = capitalLetters(response.engineerName);
         const engineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGitHub)
         dist.push(engineer);
         if (response.addBool) {
-            addEmployeeFunc();
+            employeeAdd();
         } else {
             renderOut();
         }
@@ -193,12 +181,24 @@ const engineer = () => {
 
 const intern = () => {
     inquirer.prompt(internQuestions).then(response => {
-        response.internName = capLetters(response.internName);
-        response.internSchool = capLetters(response.internSchool);
+        response.internName = capitalLetters(response.internName);
+        response.internSchool = capitalLetters(response.internSchool);
         const intern = new Intern(response.internName, response.internId, response.internEmail, response.internSchool)
         dist.push(intern);
         if (response.addBool) {
-            addEmployeeFunc();
+            employeeAdd();
+        } else {
+            renderOut();
+        }
+    })
+}
+
+const employeeAdd = () => {
+    inquirer.prompt(addEmployee).then(response => {
+        if (response.teamMember === "Engineer") {
+            engineer();
+        } else if (response.teamMember === "Intern") {
+            intern();
         } else {
             renderOut();
         }
@@ -215,4 +215,4 @@ const renderOut = () => {
     });
 }
 
-init();
+manager();
