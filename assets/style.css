@@ -25,11 +25,7 @@ body {
     background-color: #a6aaaa;
 }
 
-.cont {
-    justify-content: center;
-}
-
-.cardStyle {
+.styleCard {
     width: 20px;
     display: inline-block;
 }
