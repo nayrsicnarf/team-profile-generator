@@ -1,4 +1,3 @@
-/* font  */
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: rgb(255, 255, 255);
@@ -10,7 +9,6 @@ body {
     }
 }
 
-/* jumbotron and cards */
 .jumbotron {
     background-color: #156b76;
 }
@@ -44,7 +42,6 @@ body {
     text-align: center;
 }
 
-/* footer */
 footer,
 footer p {
     background-color: #303c6c;

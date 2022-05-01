@@ -7,10 +7,10 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
 // // these paths are used in fs.writeFile to target the correct folder locations
-// const teamArray_DIR = path.resolve(__dirname, "teamArray");
-// const teamArrayPath = path.join(teamArray_DIR, "team.html");
+const teamArray_DIR = path.resolve(__dirname, "teamArray");
+const teamArrayPath = path.join(teamArray_DIR, "myTeam.html");
 // // render is used to create the html teamArray
-// const render = require("./lib/htmlRenderer");
+const render = require("./lib/renderHtml");
 
 const validateString = async input => {
     if (input.trim() === "" || !isNaN(input.trim())) {
@@ -137,7 +137,6 @@ const internQuestions = [{
 }];
 
 const teamArray = [];
-// function to initialize program. this function uses the managerQuestions array and pushes the responses into the teamArray array. uses addBool to determine if the user wants to add another employee, else call the render function
 const init = () => {
     inquirer.prompt(managerQuestions).then(response => {
         response.managerName = capLetters(response.managerName);
@@ -149,11 +148,8 @@ const init = () => {
             renderOut();
         }
     })
-    // .catch((e) => { // was getting UnhandledPromiseRejectionWarning so added this catch(). reference https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261
-    //     console.log(e)
-    // });
 }
-// this function is called when the user wants to add another employee. uses if statement to determine if engineer or intern and calls corresponding function
+
 const addEmployeeFunc = () => {
     inquirer.prompt(addEmployee).then(response => {
         if (response.teamMember === "Engineer") {
@@ -164,11 +160,8 @@ const addEmployeeFunc = () => {
             renderOut();
         }
     })
-    //     .catch((e) => {
-    //     console.log(e)
-    // });
 }
-// this function is called when the user wants to add another engineer employee. adds user responses to the teamArray array and checks if the user wants to keep adding more employees, else call render function
+
 const engineer = () => {
     inquirer.prompt(engineerQuestions).then(response => {
         response.engineerName = capLetters(response.engineerName);
@@ -180,11 +173,8 @@ const engineer = () => {
             renderOut();
         }
     })
-    // .catch((e) => {
-    //     console.log(e)
-    // });
 }
-// this function is called when the user wants to add another intern employee. adds user responses to the teamArray array and checks if the user wants to keep adding more employees, else call render function
+
 const intern = () => {
     inquirer.prompt(internQuestions).then(response => {
         response.internName = capLetters(response.internName);
@@ -197,11 +187,8 @@ const intern = () => {
             renderOut();
         }
     })
-    // .catch((e) => {
-    //     console.log(e)
-    // });
 }
-// this function is called when the user no longer wants to add more employees. sends teamArray array to render function and uses response as the data parameter for fs.writeFile
+
 const renderOut = () => {
     const renderteamArray = render(teamArray);
     fs.writeFile(teamArrayPath, renderteamArray, err => {
@@ -211,7 +198,7 @@ const renderOut = () => {
         console.log("Success!");
     });
 }
-// this function capitalizes the first letter in each word of a string except for the word "of" i.e. university of washington => University of Washington
+
 const capLetters = str => {
     let arrayStr = str.split(" ");
     let capLetter = "";
@@ -226,5 +213,5 @@ const capLetters = str => {
     }
     return newString.trim();
 }
-// function call to initialize program
+
 init();
