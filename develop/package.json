@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "fs": "^0.0.1-security",
     "inquirer": "^8.2.3",
-    "jest": "^28.0.1"
+    "jest": "^28.0.1",
+    "path": "^0.12.7"
   },
   "name": "develop",
   "version": "1.0.0",
@@ -10,7 +12,6 @@
     "lib": "lib",
     "test": "test"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "jest"
   },

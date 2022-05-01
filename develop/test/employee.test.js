@@ -16,6 +16,6 @@ test("Does email return from getEmail()", () => {
 });
 
 test("Does Employee return from getRole()?", () => {
-    const e = new Employee("Fry", 10, "email@email.com");
-    expect(e.getRole()).toBe("Employee");
+    const emp = new Employee("Fry", 10, "email@email.com");
+    expect(emp.getRole()).toBe("Employee");
 });
