@@ -137,6 +137,22 @@ const internQuestions = [{
 }];
 
 const dist = [];
+
+const capLetters = str => {
+    let arrayStr = str.split(" ");
+    let capLetter = "";
+    let newString = "";
+    for (let i = 0; i < arrayStr.length; i++) {
+        if (arrayStr[i].toLowerCase() === "of") {
+            newString += "of ";
+        } else {
+            capLetter = arrayStr[i][0].toUpperCase();
+            newString += capLetter + arrayStr[i].slice(1, arrayStr[i].length).toLowerCase() + " ";
+        }
+    }
+    return newString.trim();
+}
+
 const init = () => {
     inquirer.prompt(managerQuestions).then(response => {
         response.managerName = capLetters(response.managerName);
@@ -197,21 +213,6 @@ const renderOut = () => {
         }
         console.log("Success!");
     });
-}
-
-const capLetters = str => {
-    let arrayStr = str.split(" ");
-    let capLetter = "";
-    let newString = "";
-    for (let i = 0; i < arrayStr.length; i++) {
-        if (arrayStr[i].toLowerCase() === "of") {
-            newString += "of ";
-        } else {
-            capLetter = arrayStr[i][0].toUpperCase();
-            newString += capLetter + arrayStr[i].slice(1, arrayStr[i].length).toLowerCase() + " ";
-        }
-    }
-    return newString.trim();
 }
 
 init();

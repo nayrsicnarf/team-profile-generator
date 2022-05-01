@@ -20,7 +20,7 @@ The goal of this assignment is to use Node.js to gather information to create an
 
 - [GitHub Repository](https://github.com/nayrsicnarf/team-profile-generator.git)
 
-- [Video Demonstration]()
+- [Video Demonstration](https://drive.google.com/file/d/1Er47JPG8dXDl5dMIaAH8Tb46Qny7eTZL/view?usp=sharing)
 
 ## Technologies
 
