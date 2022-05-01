@@ -1,20 +1,18 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: rgb(255, 255, 255);
-}
-
-@media screen and (max-width: 405px) {
-    body {
-        font-size: 20px;
-    }
+    background-color: #ffffff;
 }
 
 .jumbotron {
-    background-color: #156b76;
+    background-color: #58b0b3;
 }
 
 .card {
-    background-color: #f6f285;
+    background-color: #fff;
+}
+
+.card-header {
+    background-color: #58b0b3;
 }
 
 .card-body {
@@ -26,12 +24,13 @@ body {
 }
 
 .styleCard {
-    width: 20px;
+    width: 200px;
     display: inline-block;
+    box-shadow: 3px 3px 5px;
 }
 
 .card-body {
-    height: 212px;
+    height: 275px;
 }
 
 .team-area {
@@ -45,4 +44,10 @@ footer p {
     left: 0;
     bottom: 0;
     width: 100%;
+}
+
+@media screen and (max-width: 405px) {
+    body {
+        font-size: 20px;
+    }
 }
