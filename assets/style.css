@@ -1,0 +1,55 @@
+/* font  */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 405px) {
+    body {
+        font-size: 4.5vw;
+    }
+}
+
+/* jumbotron and cards */
+.jumbotron {
+    background-color: #156b76;
+}
+
+.card {
+    background-color: #edb5bf;
+}
+
+.card-body {
+    background-color: #4d6d9a;
+}
+
+.list-group-item {
+    background-color: #d2fdff;
+}
+
+.cont {
+    justify-content: center;
+}
+
+.cardStyle {
+    width: 19.7rem;
+    display: inline-block;
+}
+
+.card-body {
+    height: 212px;
+}
+
+.team-area {
+    text-align: center;
+}
+
+/* footer */
+footer,
+footer p {
+    background-color: #303c6c;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
