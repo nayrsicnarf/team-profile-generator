@@ -7,9 +7,9 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
 // // these paths are used in fs.writeFile to target the correct folder locations
-const teamArray_DIR = path.resolve(__dirname, "teamArray");
-const teamArrayPath = path.join(teamArray_DIR, "myTeam.html");
-// // render is used to create the html teamArray
+const dist_DIR = path.resolve(__dirname, "dist");
+const distPath = path.join(dist_DIR, "myTeam.html");
+// // render is used to create the html dist
 const render = require("./lib/renderHtml");
 
 const validateString = async input => {
@@ -136,12 +136,12 @@ const internQuestions = [{
     default: true
 }];
 
-const teamArray = [];
+const dist = [];
 const init = () => {
     inquirer.prompt(managerQuestions).then(response => {
         response.managerName = capLetters(response.managerName);
         const manager = new Manager(response.managerName, response.managerId, response.managerEmail, response.managerOfficeNumber)
-        teamArray.push(manager);
+        dist.push(manager);
         if (response.addBool) {
             addEmployeeFunc();
         } else {
@@ -166,7 +166,7 @@ const engineer = () => {
     inquirer.prompt(engineerQuestions).then(response => {
         response.engineerName = capLetters(response.engineerName);
         const engineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGitHub)
-        teamArray.push(engineer);
+        dist.push(engineer);
         if (response.addBool) {
             addEmployeeFunc();
         } else {
@@ -180,7 +180,7 @@ const intern = () => {
         response.internName = capLetters(response.internName);
         response.internSchool = capLetters(response.internSchool);
         const intern = new Intern(response.internName, response.internId, response.internEmail, response.internSchool)
-        teamArray.push(intern);
+        dist.push(intern);
         if (response.addBool) {
             addEmployeeFunc();
         } else {
@@ -190,8 +190,8 @@ const intern = () => {
 }
 
 const renderOut = () => {
-    const renderteamArray = render(teamArray);
-    fs.writeFile(teamArrayPath, renderteamArray, err => {
+    const renderdist = render(dist);
+    fs.writeFile(distPath, renderdist, err => {
         if (err) {
             return console.log(err);
         }
